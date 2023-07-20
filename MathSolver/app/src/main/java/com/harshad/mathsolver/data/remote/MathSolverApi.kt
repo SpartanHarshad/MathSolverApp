@@ -14,4 +14,5 @@ interface MathSolverApi {
     @POST("/v4/?expr=")
     @Headers("content-type: application/json")
     suspend fun getExpressionSolution(@Body requestBody: RequestBody): SolutionResponse
+
 }

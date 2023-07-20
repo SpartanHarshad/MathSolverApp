@@ -1,8 +1,6 @@
 package com.harshad.mathsolver.repository
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+
 import com.harshad.mathsolver.data.local.MathDao
 import com.harshad.mathsolver.data.local.ResultEntity
 import com.harshad.mathsolver.data.remote.MathSolverApi
@@ -17,6 +15,10 @@ class MathSolverRepository(val mathDao: MathDao) {
     private val apiService: MathSolverApi =
         RetrofitInstance.getInstance().create(MathSolverApi::class.java)
 
+
+    /**
+     * this method fetch solutions from api and store that result in room db
+     * */
     suspend fun solveExpressionSaveLocal(expressions: List<String>): ArrayList<String>? {
         return try {
             val requestBody = RequestBody(expressions, 10)
@@ -28,6 +30,9 @@ class MathSolverRepository(val mathDao: MathDao) {
         }
     }
 
+    /**
+     * in this method we are storing results in room data with converted string
+     * */
     private fun saveDataInLocalDB(
         expressions: List<String>,
         result: java.util.ArrayList<String>
@@ -46,7 +51,9 @@ class MathSolverRepository(val mathDao: MathDao) {
         }
     }
 
-
+    /**
+     * fetch all local results
+     * */
     suspend fun getHistory(): List<ResultEntity> {
         return mathDao.getAllResults()
     }

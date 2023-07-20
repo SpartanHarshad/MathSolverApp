@@ -20,6 +20,7 @@
                 android:padding="4dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
+                android:layout_marginStart="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/img_delete"
                 app:layout_constraintStart_toStartOf="parent"
