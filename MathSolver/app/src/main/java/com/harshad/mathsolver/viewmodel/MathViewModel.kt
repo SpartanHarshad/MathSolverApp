@@ -28,4 +28,10 @@ class MathViewModel(private val mathRepository: MathSolverRepository) : ViewMode
         }
         return previousSolutions
     }
+
+    fun deleteResultItem(resultEntity: ResultEntity) {
+        viewModelScope.launch {
+            mathRepository.deleteResult(resultEntity)
+        }
+    }
 }
